@@ -26,19 +26,68 @@
 # but in above example there is no validation everything is returned in json according to us like name should be in str and age in int
 #for this we have pydantic
 
+# from fastapi import FastAPI
+# from pydantic import BaseModel
+
+# app = FastAPI()
+
+# #input validation using pydantic
+# class User(BaseModel):
+#     name:str                   
+#     age:int
+
+# @app.post("/create-user")
+# def create_user(user:User):
+#     return{
+#         "message" : "User Created",
+#         "data" : user
+#     }
+    
+# pydantic model ----> ye ek schema structure hota hai jo define karta hai data ka format kaisa hoga
+# user ke pass kitni field honi chahiye ye pydantic model define karta hai 
+#pydantic model mai aapne bataya user k pass name,age,email honi chahiye to yhi 3 cheezein hogi jo hamne pehle se define kari hui hai iske alawa aur kuch nhi hoga
+#to pydantic model mai hamei pehle se hi field define karni hoti hai isi hisaab se hum model create karte hai
+
+#1 Creating schema
+
+# from fastapi import FastAPI
+# from pydantic import BaseModel
+
+# app = FastAPI()
+
+# class User(BaseModel):
+#     name:str
+#     age:int
+#     email:str
+
+# @app.post("/create_user")
+
+# def create_user(user:User):
+#     return{
+#         "message" : "user created",
+#         "data": user
+#     }
+    
+    
+#Nested Models 
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 
 app = FastAPI()
 
-#input validation
-class User(BaseModel):
-    name:str                   
-    age:int
+class Address(BaseModel):
+    city:str
+    pincode:int
 
-@app.post("/create-user")
+class User(BaseModel):
+    name:str
+    age:int
+    address:Address
+
+@app.post("/create_user")
 def create_user(user:User):
     return{
-        "message" : "User Created",
-        "data" : user
+        "message":"USER CREATED",
+        "data":user
     }
