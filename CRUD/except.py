@@ -1,11 +1,5 @@
 # FastAPI Exception Handling
 # See diagram: D:\AI PROJECTS\FAST API\CRUD\ChatGPT Image Aug 30, 2026, 06_53_17 PM.png
-
-
-
-
-
-
 # Exception Handling
 
 # . HTTPException
