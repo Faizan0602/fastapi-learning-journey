@@ -9,11 +9,13 @@ from jose import jwt
 from fastapi.security import OAuth2PasswordBearer,OAuth2PasswordRequestForm
 from datetime import datetime,timedelta,timezone
 from passlib.context import CryptContext
+import os
+from dotenv import load_dotenv
 
 app = FastAPI()
 
 #JWT CONFIG
-SECRET_KEY = "mysecret"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 ALGORITHM = "HS256"
 
